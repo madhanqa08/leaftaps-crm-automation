@@ -59,5 +59,6 @@ public class LeadcreationTest
         Assert.assertEquals(first_name,verify_firstname);
         String verify_lastname = viewLeadPage.gettinglastname();
         Assert.assertEquals(last_name,verify_lastname);
+        driver.close();
     }
 }

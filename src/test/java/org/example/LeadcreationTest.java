@@ -2,6 +2,7 @@ package org.example;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import pageobjectmodel.*;
 import java.time.Duration;
 public class LeadcreationTest
@@ -12,7 +13,8 @@ public class LeadcreationTest
     public static String first_name = "Madhan kumar";
     public static String last_name = "B";
     public static String source_select = "Website";
-    public static void main(String[] args) throws InterruptedException
+    @Test
+    public void run()
     {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

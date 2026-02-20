@@ -68,7 +68,6 @@ public class Leafground
         System.out.println((isCleared.equals("") ? "Cleared " : "Not Cleared"));
         driver.quit();
     }
-
     @Test(priority = 5)
     public void testcas5()
     {

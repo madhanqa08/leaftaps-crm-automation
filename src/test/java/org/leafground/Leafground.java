@@ -3,9 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import java.time.Duration;
 public class Leafground extends Baseclass
 {
     // accessing pojo
@@ -92,7 +90,6 @@ public class Leafground extends Baseclass
         ageField.sendKeys(Keys.ENTER);
         Thread.sleep(3000L);
         WebElement errorField = driver.findElement(By.xpath("//span[@class='ui-message-error-detail']"));
-        WebDriverWait wait  = new WebDriverWait(driver,Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(errorField)).click();
         String getError = errorField.getText();
         System.out.println((getError.equals("Age is mandatory") ? "Age : Error is printing✅" : "Age : Error is Error❌"));
@@ -114,7 +111,6 @@ public class Leafground extends Baseclass
         WebElement nameField = driver.findElement(By.xpath("//input[@id='j_idt106:auto-complete_input']"));
         nameField.sendKeys(datacenter.getName());
         WebElement downdrop = driver.findElement(By.xpath("(//span[@id='j_idt106:auto-complete_panel']//ul//li)[4]"));
-        WebDriverWait wait  = new WebDriverWait(driver,Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(downdrop)).click();
         Thread.sleep(2000);
         WebElement nameBoxed = driver.findElement(By.xpath("//span[@class='ui-autocomplete-token-label']"));
@@ -125,14 +121,14 @@ public class Leafground extends Baseclass
     }
 
     @Test(priority = 12)
-    public void testcase12() throws InterruptedException
+    public void testcase12()
     {
         WebElement calenderField = driver.findElement(By.xpath("//input[@id='j_idt106:j_idt116_input']"));
         calenderField.click();
         WebElement calender = driver.findElement(By.xpath("//div[@id='j_idt106:j_idt116_panel']"));
-        WebDriverWait wait  = new WebDriverWait(driver,Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(calender));
-        for(int i = 1;i<=271;i++)
+        int num = Integer.parseInt(datacenter.getCalender());
+        for(int i = 1;i<=num;i++)
         {
             WebElement previousBtn = driver.findElement(By.xpath("//a[@class='ui-datepicker-prev ui-corner-all']"));
             previousBtn.click();
@@ -159,11 +155,13 @@ public class Leafground extends Baseclass
         WebElement spinField = driver.findElement(By.xpath("//input[@id='j_idt106:j_idt118_input']"));
         spinField.sendKeys(datacenter.getNumber());
         WebElement upField = driver.findElement(By.xpath("(//a[contains(@class,'ui-spinner-up')]//span)[1]"));
-        for (int i = 1; i <= 20; i++) {
+        int num = Integer.parseInt(datacenter.getIncrement());
+        for (int i = 1; i <=num; i++)
+        {
             Thread.sleep(200L);
             upField.click();
         }
-        int num1 = Integer.parseInt(datacenter.getNumber())+20;
+        int num1 = Integer.parseInt(datacenter.getNumber())+num;
         int num2 = Integer.parseInt(spinField.getAttribute("aria-valuenow"));
         System.out.println("Num1 : "+num1+" Num2 : "+num2);
         System.out.println((num1 == num2) ? "increment : increment is verified✅" : "increment : increment is not Verified");
@@ -188,7 +186,6 @@ public class Leafground extends Baseclass
         popupField.click();
         try
         {
-            WebDriverWait wait  = new WebDriverWait(driver,Duration.ofSeconds(5));
             WebElement keyboard = driver.findElement(By.xpath("//div[contains(@class,'keypad-popup')]"));
             wait.until(ExpectedConditions.visibilityOf(keyboard));
             System.out.println("Keyboard : Keyboard is present✅");

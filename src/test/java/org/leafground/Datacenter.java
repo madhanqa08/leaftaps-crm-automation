@@ -9,6 +9,24 @@ public class Datacenter
     private String lorem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ";
     private String name = "Madhan";
     private String number = "51";
+    private String increment = "20";
+    private String calender = "271";
+
+    public String getCalender() {
+        return calender;
+    }
+
+    public void setCalender(String calender) {
+        this.calender = calender;
+    }
+
+    public String getIncrement() {
+        return increment;
+    }
+
+    public void setIncrement(String increment) {
+        this.increment = increment;
+    }
 
     public String getNumber() {
         return number;
